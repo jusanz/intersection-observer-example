@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>intersection observer example</title>
+
+    <style>
+      h1 {
+        font-size: 56px;
+      }
+      p {
+        font-size: 32px;
+      }
+      div {
+        margin: 100px 100px 0 0;
+      }
+      .fade-up {
+        opacity: 0;
+        transform: translateY(20vh);
+        visibility: hidden;
+        transition: opacity 0.6s ease-out, transform 1.2s ease-out;
+        will-change: opacity, visibility;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Lorem Ipsum</h1>
+    <div class="fade-up">
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ac urna
+        augue. Proin fermentum et erat sit amet tempus. Ut et mattis velit.
+        Pellentesque mollis risus luctus, sagittis lacus scelerisque, sagittis
+        velit. Fusce consectetur elit vel sapien faucibus pellentesque. Maecenas
+        ultrices quam nec lacus scelerisque, ut hendrerit enim sagittis. Quisque
+        vel suscipit sem. Duis arcu risus, consectetur at tincidunt sed,
+        imperdiet id mi. Sed vitae dui eu lorem euismod accumsan. Mauris ac
+        tempor orci, eu convallis augue. Pellentesque tristique risus sed
+        pretium dictum. Curabitur eu leo urna. Nulla id elementum diam, rutrum
+        rhoncus leo. Mauris laoreet rhoncus turpis, a gravida augue sodales id.
+        Ut in libero porta, vestibulum sapien id, rhoncus nisl. Ut non dapibus
+        risus, eleifend suscipit mauris.
+      </p>
+    </div>
+    <div class="fade-up">
+      <p>
+        Integer rhoncus dolor at est rhoncus facilisis. Curabitur hendrerit
+        efficitur ante et consectetur. Fusce eget metus et elit fermentum
+        viverra nec eget magna. Suspendisse non velit maximus lectus mattis
+        tempus. Curabitur scelerisque ullamcorper lacus vitae ornare. Mauris
+        pretium dapibus ante non pellentesque. Vivamus ut purus erat. In hac
+        habitasse platea dictumst. Sed ullamcorper enim et est imperdiet rutrum.
+        Nullam urna elit, lobortis eget massa efficitur, vehicula mattis dolor.
+      </p>
+    </div>
+    <div class="fade-up">
+      <p>
+        Pellentesque porta metus eget porttitor semper. Nam euismod convallis
+        fringilla. Suspendisse dignissim augue in arcu dapibus consequat. Aenean
+        vulputate varius dui, in fringilla risus pulvinar nec. Proin enim quam,
+        vulputate et sollicitudin ut, mollis eget ipsum. Nunc facilisis mauris
+        maximus tellus dignissim dignissim. Nunc aliquet consequat fringilla.
+      </p>
+    </div>
+    <div class="fade-up">
+      <p>
+        Duis hendrerit mi ac mi ornare tincidunt. Etiam eu odio eget augue
+        egestas ultricies. Sed efficitur, ex vel vulputate tempor, risus elit
+        efficitur purus, ut aliquet metus lectus vel lacus. Ut pretium nulla ac
+        diam ultricies tincidunt. Morbi eros metus, faucibus a metus a, viverra
+        ornare dolor. Aliquam ac mi egestas, rutrum felis ac, pulvinar sem.
+        Mauris egestas lacus purus.
+      </p>
+    </div>
+    <div class="fade-up">
+      <p>
+        Aliquam erat volutpat. Proin condimentum urna nunc, non tempor mi
+        scelerisque ac. Nulla vel nibh nisl. Praesent in sem at quam commodo
+        euismod non id velit. Maecenas at fringilla augue. Nullam in molestie
+        erat, quis vulputate lorem. Integer mollis eu augue quis accumsan. Duis
+        gravida tempus massa vitae mattis.
+      </p>
+    </div>
+    <script>
+      const options = {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.5,
+      };
+
+      const callback = (entries, observer) => {
+        const entry = entries[0];
+        entry.target.style.opacity = 1;
+        entry.target.style.transform = "none";
+        entry.target.style.visibility = "visible";
+      };
+
+      const observer = new IntersectionObserver(callback, options);
+
+      document
+        .querySelectorAll(".fade-up")
+        .forEach((target) => observer.observe(target));
+    </script>
+  </body>
+</html>
